@@ -10,6 +10,8 @@ from flask import redirect
 from flask import url_for
 from flask import request
 from passwordhelper import PasswordHelper
+from flask_login import current_user
+import config
 
 
 app = Flask(__name__)
@@ -22,11 +24,6 @@ app.secret_key = 'gev9wVwKUiRzdgptOzNFrC/3AfaTLAlZ7OmzTC17eV6T2bMTtmvKL5biAl5Fnb
 @app.route("/")
 def home():
 	return render_template("home.html")
-
-@app.route("/account")
-@login_required
-def account():
-	return "You are logged in"
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -64,6 +61,25 @@ def load_user(user_id):
 	user_password = DB.get_user(user_id)
 	if user_password:
 		return User(user_id)
+
+@app.route("/dashboard")
+@login_required
+def dashboard():
+	return render_template("dashboard.html")
+
+@app.route("/account")
+@login_required
+def account():
+	return render_template("account.html")
+
+@app.route("/account/createtable", methods=["POST"])
+@login_required
+def account_createtable():
+	tablename = request.form.get("tablenumber")
+	tableid = DB.add_Table(tablename, current_user.get_id)
+	new_url = config.base_url + "newrequest/" + tableid
+	DB.update_table(tableid, new_url)
+	return redirect(url_for('account'))
 
 if __name__ == "__main__":
 	app.run(port=5000, debug=True)
