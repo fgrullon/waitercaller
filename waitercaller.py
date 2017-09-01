@@ -70,16 +70,25 @@ def dashboard():
 @app.route("/account")
 @login_required
 def account():
-	return render_template("account.html")
+	tables = DB.get_tables(current_user.get_id())
+	return render_template("account.html", tables=tables)
 
 @app.route("/account/createtable", methods=["POST"])
 @login_required
 def account_createtable():
 	tablename = request.form.get("tablenumber")
-	tableid = DB.add_Table(tablename, current_user.get_id)
+	tableid = DB.add_table(tablename, current_user.get_id())
 	new_url = config.base_url + "newrequest/" + tableid
 	DB.update_table(tableid, new_url)
 	return redirect(url_for('account'))
+
+@app.route("/account/deletetable", methods=["POST"])
+@login_required
+def account_deletetable():
+	tableid = request.form.get("tableid")
+	DB.delete_table(tableid)
+	return redirect(url_for('account'))
+
 
 if __name__ == "__main__":
 	app.run(port=5000, debug=True)
