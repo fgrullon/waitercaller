@@ -13,6 +13,7 @@ from passwordhelper import PasswordHelper
 from flask_login import current_user
 import config
 from bitlyhelper import BitlyHelper
+import datetime
 
 
 app = Flask(__name__)
@@ -90,6 +91,11 @@ def account_deletetable():
 	tableid = request.form.get("tableid")
 	DB.delete_table(tableid)
 	return redirect(url_for('account'))
+
+@app.route("/newrequest/<tid>")
+def newrequest(tid):
+	DB.add_request(tid, datetime.datetime.now())
+	return "Your request has been logged and a waiter will be with you shortly."
 
 
 if __name__ == "__main__":
