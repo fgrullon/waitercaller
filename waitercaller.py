@@ -68,7 +68,19 @@ def load_user(user_id):
 @app.route("/dashboard")
 @login_required
 def dashboard():
-	return render_template("dashboard.html")
+	now = datetime.datetime.now()
+	requests = DB.get_requests(current_user.get_id())
+	for req in requests:
+		deltaseconds = (now - req['time']).seconds
+		req['wait_minutes'] = "{}.{}".format((deltaseconds/60), str(deltaseconds % 60).zfill(2))		
+	return render_template("dashboard.html", requests=requests)
+
+@app.route("dashboard/resolve")
+@login_required
+def dashboard_resolve():
+	request_id = request.args.get("request_id")
+	DB.delete_request(request_id)
+	return redirect(url_for('dashboard'))
 
 @app.route("/account")
 @login_required
