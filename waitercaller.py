@@ -14,6 +14,7 @@ from flask_login import current_user
 import config
 from bitlyhelper import BitlyHelper
 import datetime
+from forms import RegistrationForm
 
 
 app = Flask(__name__)
@@ -26,7 +27,8 @@ app.secret_key = 'gev9wVwKUiRzdgptOzNFrC/3AfaTLAlZ7OmzTC17eV6T2bMTtmvKL5biAl5Fnb
 
 @app.route("/")
 def home():
-	return render_template("home.html")
+	registrationform = RegistrationForm()
+	return render_template("home.html", registrationform=registrationform)
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -75,7 +77,7 @@ def dashboard():
 		req['wait_minutes'] = "{}.{}".format((deltaseconds/60), str(deltaseconds % 60).zfill(2))		
 	return render_template("dashboard.html", requests=requests)
 
-@app.route("dashboard/resolve")
+@app.route("/dashboard/resolve")
 @login_required
 def dashboard_resolve():
 	request_id = request.args.get("request_id")
