@@ -44,17 +44,16 @@ def login():
 
 @app.route("/register", methods=["POST"])
 def register():
-	email = request.form.get("mail")
-	pw1 = request.form.get("password")
-	pw2 = request.form.get("password2")
-	if not pw1 == pw2:
-		return redirect(url_for("home"))
-	if DB.get_user(email):
-		return redirect(url_for("home"))
-	salt = str(PH.get_salt())
-	hashed = PH.get_hash(pw1 + salt)
-	DB.add_user(email, salt, hashed)
-	return redirect(url_for("home"))
+	form = RegistrationForm(request.form)
+	if form.validate():
+		if DB.get_user(form.email.data):
+			form.email.errors.append("Email addres already registered")
+			return render_template('home.html', registrationform=form)
+		salt = str(PH.get_salt())
+		hashed = PH.get_hash(form.password2.data + salt)
+		DB.add_user(form.email.data, salt, hashed)
+		return render_template("home.html", registrationform=form, onloadmessage="Registration successful. Please log in.")
+	return render_template('home.html', registrationform=form)
 
 @app.route("/logout")
 def logout():
