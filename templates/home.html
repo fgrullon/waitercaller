@@ -19,9 +19,9 @@
 
 
   </head>
-
-  <body>
-
+{% block bodytag %}
+  <body {% if onloadmessage %} onload="alert('{{ onloadmessage }}');" {{ endif }}>
+{% endblock %}
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -33,18 +33,34 @@
           </button>
           <a class="navbar-brand" href="#">Waiter Caller</a>
         </div>
+
         <div id="navbar" class="navbar-collapse collapse">
+
           <form class="navbar-form navbar-right" action="/login" method="post">
+            {% if loginform.errors %}
+              <ul class="errors">
+                {% for field_name, field_errors in loginform.errors | dictsort
+                if field_errors %}
+                    {% for error in field_errors %}
+                      <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+            {{ loginform.csrf_token }}
             <div class="form-group">
-              <input type="text" name="email" placeholder="Email" class="form-control">
+              {{ loginform.email(class="form-control", placeholder="Email Addres")}}
             </div>
             <div class="form-group">
-              <input type="password" name="password" placeholder="Password" class="form-control">
+              {{ loginform.email(class="form-control", placeholder="Password")}}
             </div>
-           
-            <input type="submit" value="Sign in" class="btn btn-success">
+            <div class="form-group">
+              {{ loginform.submit(value="Sign in", class="btn btn-success")}}
+            </div>
           </form>
+
         </div><!--/.navbar-collapse -->
+
       </div>
     </nav>
 
@@ -77,8 +93,8 @@
             <div class="form-group">
               <div class="col-sm-9">
               {% if registrationform.email.errors %}
-              <ul class="errors"> 
-               {% for error in registrationform.email.errors%} 
+              <ul class="errors">
+               {% for error in registrationform.email.errors%}
                 <li>{{ error }}</li>
                {% endfor %}
                  </ul>
@@ -89,8 +105,8 @@
             <div class="form-group">
               <div class="col-sm-9">
                 {% if registrationform.password.errors %}
-                <ul class="errors"> 
-                 {% for error in registrationform.password.errors%} 
+                <ul class="errors">
+                 {% for error in registrationform.password.errors%}
                   <li>{{ error }}</li>
                  {% endfor %}
                  </ul>
@@ -101,8 +117,8 @@
             <div class="form-group">
               <div class="col-sm-9">
                {% if registrationform.password2.errors %}
-                <ul class="errors"> 
-                 {% for error in registrationform.password2.errors%} 
+                <ul class="errors">
+                 {% for error in registrationform.password2.errors%}
                   <li>{{ error }}</li>
                  {% endfor %}
                  </ul>

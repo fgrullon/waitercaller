@@ -15,6 +15,7 @@ import config
 from bitlyhelper import BitlyHelper
 import datetime
 from forms import RegistrationForm
+from forms import LoginForm
 
 
 app = Flask(__name__)
@@ -27,20 +28,20 @@ app.secret_key = 'gev9wVwKUiRzdgptOzNFrC/3AfaTLAlZ7OmzTC17eV6T2bMTtmvKL5biAl5Fnb
 
 @app.route("/")
 def home():
-	registrationform = RegistrationForm()
-	return render_template("home.html", registrationform=registrationform)
+	return render_template("home.html", loginform=LoginForm(), registrationform=RegistrationForm())
 
 @app.route("/login", methods=["POST"])
 def login():
-	email = request.form.get("email")
-	password = request.form.get("password")
-	user_password = DB.get_user(email)
-	stored_user = DB.get_user(email)
-	if stored_user and PH.validate_password(password, stored_user['salt'], stored_user['hashed']):
-		user = User(email)
-		login_user(user, remember=True)
-		return redirect(url_for('account'))
-	return home()
+	form = LoginForm(request.form)
+	if form.validate():
+		stored_user = DB.get_user(form.loginemail.data)
+		if stored_user and PH.validate_password(form.loginpassword.data,
+		stored_user['salt'], stored_user['hashed']):
+		    user = User(form.remember=True)
+			return redirect(url_for('account'))
+		form.loginemail.errors.append("Email or password invalid")
+	return render_template("home.html", loginform=form,
+	registrationform=RegistrationForm())
 
 @app.route("/register", methods=["POST"])
 def register():
@@ -48,12 +49,12 @@ def register():
 	if form.validate():
 		if DB.get_user(form.email.data):
 			form.email.errors.append("Email addres already registered")
-			return render_template('home.html', registrationform=form)
+			return render_template('home.html', loginform=LoginForm(), registrationform=form)
 		salt = str(PH.get_salt())
 		hashed = PH.get_hash(form.password2.data + salt)
 		DB.add_user(form.email.data, salt, hashed)
-		return render_template("home.html", registrationform=form, onloadmessage="Registration successful. Please log in.")
-	return render_template('home.html', registrationform=form)
+		return render_template("home.html", loginform=LoginForm(), registrationform=form, onloadmessage="Registration successful. Please log in.")
+	return render_template('home.html', loginform=LoginForm(), registrationform=form)
 
 @app.route("/logout")
 def logout():
@@ -73,7 +74,7 @@ def dashboard():
 	requests = DB.get_requests(current_user.get_id())
 	for req in requests:
 		deltaseconds = (now - req['time']).seconds
-		req['wait_minutes'] = "{}.{}".format((deltaseconds/60), str(deltaseconds % 60).zfill(2))		
+		req['wait_minutes'] = "{}.{}".format((deltaseconds/60), str(deltaseconds % 60).zfill(2))
 	return render_template("dashboard.html", requests=requests)
 
 @app.route("/dashboard/resolve")
