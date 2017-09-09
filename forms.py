@@ -3,6 +3,7 @@ from wtforms import PasswordField
 from wtforms import SubmitField
 from wtforms.fields.html5 import EmailField
 from wtforms import validators
+from wtforms import TextField
 
 
 class RegistrationForm(FlaskForm):
@@ -22,3 +23,9 @@ class LoginForm(FlaskForm):
 	loginpassword = PasswordField('password',
 	validators = [validators.DataRequired(message="Password is required")])
 	submit = SubmitField('submit', [validators.DataRequired()])
+
+class CreateTableForms(FlaskForm):
+	tablenumber = TextField('tablenumber',
+	validators = [validators.DataRequired()])
+	submit = SubmitField('createtablesubmit',
+	validators = [validators.DataRequired()])
