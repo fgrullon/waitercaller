@@ -1,4 +1,3 @@
-from mockdbhelper import MockDBHelper as DBHelper
 from flask import Flask
 from flask import render_template
 from flask_login import LoginManager
@@ -12,6 +11,10 @@ from flask import request
 from passwordhelper import PasswordHelper
 from flask_login import current_user
 import config
+if config.test:
+	from mockdbhelper import MockDBHelper as DBHelper
+else:
+	from dbhelper import DBHelper
 from bitlyhelper import BitlyHelper
 import datetime
 from forms import RegistrationForm
@@ -100,7 +103,7 @@ def account_createtable():
 		tableid = DB.add_table(form.tablenumber.data,
 		current_user.get_id())
 		new_url = BH.shorten_url(config.base_url + "newrequest/" +
-		tableid)
+		str(tableid))
 		DB.update_table(tableid, new_url)
 		return redirect(url_for('account'))
 	return render_template("account.html", createtableform=form,
