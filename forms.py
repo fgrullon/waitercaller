@@ -8,13 +8,13 @@ from wtforms import TextField
 
 class RegistrationForm(FlaskForm):
 	email = EmailField('email',
-		validators = [validators.DataRequired(), validators.Email()])
+	validators = [validators.DataRequired(), validators.Email()])
 	password = PasswordField('password',
-		validators = [validators.DataRequired(),
-		validators.Length(min=8, message="Please choose a password of at least 8 characters")])
+	validators = [validators.DataRequired(),
+	validators.Length(min=8, message="Please choose a password of at least 8 characters")])
 	password2 = PasswordField('password2',
-		validators = [validators.DataRequired(),
-		validators.EqualTo('password', message="Passwords must match")])
+	validators = [validators.DataRequired(),
+	validators.EqualTo('password', message="Passwords must match")])
 	submit = SubmitField('submit', [validators.DataRequired()])
 
 class LoginForm(FlaskForm):
