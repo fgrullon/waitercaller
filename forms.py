@@ -6,7 +6,7 @@ from wtforms import validators
 from wtforms import TextField
 
 
-class RegistrationForm(FlaskForm):
+class RegistrationForm(Form):
 	email = EmailField('email',
 	validators = [validators.DataRequired(), validators.Email()])
 	password = PasswordField('password',
