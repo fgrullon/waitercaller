@@ -30,7 +30,22 @@
                   {% endfor %}
                </table>
                <h2>Add new table</h2>
-             
+               <form class="form-inline" action="/account/createtable" method="POST">
+                 <div class="form-group">
+                   {% if createtableform.tablenumber.errors %}
+                      <ul class="errors">
+                        {% for error in createtableform.tablenumber.errors %}
+                          <li>{{ errror }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                    {{ createtableform.csrf_token }}
+                    {{ createtableform.tablenumber(class="form-control"),
+                       placeholder="Table number or name"}}
+                    {{ createtableform.submit(value="Create",
+                       class="btn btn-primary")}}
+                 </div>
+               </form>
            </div>
        </div>
    </div>
