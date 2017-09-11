@@ -20,8 +20,8 @@
  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
-{% block bodytag%}
-<body {% if onloadmessage %} onload="alert('{{ onloadmessage }}');">
+{% block bodytag %}
+<body {% if onloadmessage %} onload="alert('{{ onloadmessage }}');" {% endif %}>
 {% endblock %}
   {% block navbar %}
   <nav class="navbar navbar-inverse navbar-fixed-top">
