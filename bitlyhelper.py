@@ -1,4 +1,7 @@
-from urllib.request import urlopen
+try:
+    import urllib.request as urllib2
+except ImportError:
+    import urllib2
 import json
 
 TOKEN = "a1a3db4bd4044d1022fdb45f1a4d18a9240eaede"
@@ -11,7 +14,7 @@ class BitlyHelper:
 		try:
 			url = ROOT_URL + SHORTEN.format(TOKEN, longurl)
 			print(url)
-			response = urlopen(url).read()
+			response = urllib2.urlopen(url).read()
 			jr = json.loads(response)
 			print(jr)
 			return jr['data']['url']

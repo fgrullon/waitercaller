@@ -24,7 +24,7 @@ class LoginForm(FlaskForm):
 	validators = [validators.DataRequired(message="Password is required")])
 	submit = SubmitField('submit', [validators.DataRequired()])
 
-class CreateTableForms(FlaskForm):
+class CreateTableForm(FlaskForm):
 	tablenumber = TextField('tablenumber',
 	validators = [validators.DataRequired()])
 	submit = SubmitField('createtablesubmit',
