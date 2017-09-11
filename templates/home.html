@@ -46,12 +46,15 @@
               </ul>
             {% endif %}
             {{ loginform.csrf_token }}
-           
-              {{ loginform.email(class="form-control", placeholder="Email Addres")}}
-        
-            <div class="form-group"></div>
-            <div class="form-group"></div>
-        
+            <div class="form-group">
+              {{ loginform.loginemail(class="form-control", placeholder="Email Addres")}}
+            </div>
+            <div class="form-group">
+              {{ loginform.loginpassword(class="form-control", placeholder="Password")}}
+            </div>
+            <div class="form-group">
+             {{ loginform.loginsubmit(value="Sign in", class="btn btn-success")}}
+            </div>
           </form>
 
 
