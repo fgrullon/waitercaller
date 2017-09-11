@@ -32,7 +32,7 @@ app.secret_key = 'gev9wVwKUiRzdgptOzNFrC/3AfaTLAlZ7OmzTC17eV6T2bMTtmvKL5biAl5Fnb
 
 @app.route("/")
 def home():
-	return render_template("home.html", loginform=LoginForm(), registrationform=RegistrationForm())
+	return render_template("home.html")
 
 @app.route("/login", methods=["POST"])
 def login():
