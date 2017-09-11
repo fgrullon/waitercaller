@@ -36,13 +36,20 @@ def home():
 
 @app.route("/login", methods=["POST"])
 def login():
+	print("Hello1")
 	form = LoginForm(request.form)
+	print("Hello2")
 	if form.validate():
+		print("Hello3")
 		stored_user = DB.get_user(form.loginemail.data)
+		print("Hello4")
 		if stored_user and PH.validate_password(form.loginpassword.data,
 		stored_user['salt'], stored_user['hashed']):
+			print("Hello5")
 		    user = User(form.loginemail.data)
+		    print("Hello6")
 		    login_user(user, remember=True)
+		    print("Hello7")
 		    return redirect(url_for('account'))
 		form.loginemail.errors.append("Email or password invalid")
 	return render_template("home.html", loginform=form,
