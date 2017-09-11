@@ -13,10 +13,8 @@ class BitlyHelper:
 	def shorten_url(self, longurl):
 		try:
 			url = ROOT_URL + SHORTEN.format(TOKEN, longurl)
-			print(url)
 			response = urllib2.urlopen(url).read()
 			jr = json.loads(response)
-			print(jr)
 			return jr['data']['url']
 		except Exception as e:
 			print(e)
