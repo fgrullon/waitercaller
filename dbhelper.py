@@ -42,4 +42,4 @@ class DBHelper:
         return list(self.db.requests.find({"owner" : owner_id}))
 
     def delete_request(self, request_id):
-        self.db.requests.remove({"_id", ObjectId(request_id)})
+        self.db.requests.remove({"_id": ObjectId(request_id)})
