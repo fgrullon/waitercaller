@@ -38,7 +38,8 @@ def home():
 def login():
 	form = LoginForm(request.form)
 	if form.validate():
-		print(True)
+		stored_user = DB.get_user(form.loginemail.data)
+		print(stored_user)
 		form.loginemail.errors.append("Email or password invalid")
 	return render_template("home.html", loginform=form,
 	registrationform=RegistrationForm())
