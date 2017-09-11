@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 
 {% block content %}
    <div class="jumbotron">
@@ -40,8 +41,8 @@
                       </ul>
                     {% endif %}
                     {{ createtableform.csrf_token }}
-                    {{ createtableform.tablenumber(class="form-control"),
-                       placeholder="Table number or name"}}
+                    {{ createtableform.tablenumber(class="form-control",
+                       placeholder="Table number or name")}}
                     {{ createtableform.submit(value="Create",
                        class="btn btn-primary")}}
                  </div>
