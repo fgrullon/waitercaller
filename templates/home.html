@@ -45,7 +45,11 @@
                 {% endfor %}
               </ul>
             {% endif %}
-     
+            {{ loginform.csrf_token }}
+            <div class="form-group">
+              {{ loginform.email(class="form-control", placeholder="Email Addres")}}
+            </div>
+            
           </form>
 
 
