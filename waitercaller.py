@@ -137,7 +137,7 @@ def order_addcategorie():
 		name = form.name.data
 		DB.add_categories(name)
 		return redirect(url_for('orders'))
-	return render_template("order.html", createmenucategorieform=CreateMenuCategorieForm())
+	return render_template("orders.html", createmenucategorieform=CreateMenuCategorieForm())
 
 if __name__ == "__main__":
 	app.run(port=5000, debug=True)

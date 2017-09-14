@@ -48,7 +48,7 @@
                  </div>
                </form>
                <h2>Modify menu</h2>
-               <form class="form-inline" action="/account/createtable" method="POST">
+               <form class="form-inline" action="/orders/addcategorie" method="POST">
                  <div class="form-group">
                    {% if createmenucategorieform.name.errors %}
                       <ul class="errors">
@@ -59,7 +59,7 @@
                     {% endif %}
                     {{ createmenucategorieform.csrf_token }}
                     {{ createmenucategorieform.name(class="form-control",
-                       placeholder="Table number or name")}}
+                       placeholder="Categorie name")}}
                     {{ createmenucategorieform.submit(value="Create",
                        class="btn btn-primary")}}
                  </div>
