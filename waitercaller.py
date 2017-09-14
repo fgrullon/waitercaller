@@ -134,7 +134,8 @@ def order_mag():
 def order_addcategorie():
 	form = AddCategorie(request.form)
 	if form.validate():
-		name = form.name.data
+		name = form.categorie_name.data
+		print(name)
 		DB.add_categories(name)
 		return redirect(url_for('account'))
 	return render_template("account.html")

@@ -35,7 +35,7 @@ class CreateTableForm(FlaskForm):
 	validators = [validators.DataRequired()])
 
 class CreateMenuCategorieForm(FlaskForm):
-	name = TextField('name',
+	categorie_name = TextField('categorie_name',
 	validators = [validators.DataRequired()])
 	submit = SubmitField('createmenucategorie',
 	validators = [validators.DataRequired()])

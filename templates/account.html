@@ -50,15 +50,15 @@
                <h2>Add New Categorie</h2>
                <form class="form-inline" action="/orders/addcategorie" method="POST">
                  <div class="form-group">
-                   {% if createmenucategorieform.name.errors %}
+                   {% if createmenucategorieform.categorie_name.errors %}
                       <ul class="errors">
-                        {% for error in createmenucategorieform.name.errors %}
+                        {% for error in createmenucategorieform.categorie_name.errors %}
                           <li>{{ errror }}</li>
                         {% endfor %}
                       </ul>
                     {% endif %}
                     {{ createmenucategorieform.csrf_token }}
-                    {{ createmenucategorieform.name(class="form-control",
+                    {{ createmenucategorieform.categorie_name(class="form-control",
                        placeholder="Categorie name")}}
                     {{ createmenucategorieform.submit(value="Create",
                        class="btn btn-primary")}}
