@@ -47,7 +47,7 @@
                        class="btn btn-primary")}}
                  </div>
                </form>
-               <h2>Modify menu</h2>
+               <h2>Add New Categorie</h2>
                <form class="form-inline" action="/orders/addcategorie" method="POST">
                  <div class="form-group">
                    {% if createmenucategorieform.name.errors %}
@@ -61,6 +61,29 @@
                     {{ createmenucategorieform.name(class="form-control",
                        placeholder="Categorie name")}}
                     {{ createmenucategorieform.submit(value="Create",
+                       class="btn btn-primary")}}
+                 </div>
+               </form>
+                <h2>Add New Item</h2>
+               <form class="form-inline" action="/orders/addcategorie" method="POST">
+                 <div class="form-group">
+                   {% if addmenuitemform.name.errors %}
+                      <ul class="errors">
+                        {% for error in addmenuitemform.name.errors %}
+                          <li>{{ errror }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                    {{ addmenuitemform.csrf_token }}
+                    {{ addmenuitemform.name(class="form-control",
+                       placeholder="Select categorie")}}
+                    {{ addmenuitemform.item(class="form-control",
+                       placeholder="Item name")}}
+                    {{ addmenuitemform.description(class="form-control",
+                       placeholder="Description")}}
+                    {{ addmenuitemform.price(class="form-control",
+                       placeholder="Price")}}
+                    {{ addmenuitemform.submit(value="Create",
                        class="btn btn-primary")}}
                  </div>
                </form>
