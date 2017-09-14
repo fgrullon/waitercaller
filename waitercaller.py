@@ -122,6 +122,10 @@ def newrequest(tid):
 		return "Your request has been logged and a waiter will be with you shortly."
 	return "There is already a request pending for this table. Please be patient, a waiter will be there ASAP."
 
+@app.route("/orders")
+def order_mag():
+	return render_template("orders.html")
+
 
 if __name__ == "__main__":
 	app.run(port=5000, debug=True)
