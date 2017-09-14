@@ -20,6 +20,8 @@ import datetime
 from forms import RegistrationForm
 from forms import LoginForm
 from forms import CreateTableForm
+from forms import CreateMenuCategorieForm
+from forms import AddMenuItemForm
 
 
 app = Flask(__name__)
@@ -123,9 +125,19 @@ def newrequest(tid):
 	return "There is already a request pending for this table. Please be patient, a waiter will be there ASAP."
 
 @app.route("/orders")
+login_required
 def order_mag():
 	return render_template("orders.html")
 
+@app.route("/orders/addcategorie")
+@login_required
+def order_addcategorie():
+	form = AddCategorie(request.form)
+	if form.validate():
+		name = form.name.data
+		DB.add_categories(name)
+		return redirect(url_for('orders'))
+	return render_template("order.html", createmenucategorieform=CreateMenuCategorieForm())
 
 if __name__ == "__main__":
 	app.run(port=5000, debug=True)

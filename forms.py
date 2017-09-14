@@ -4,6 +4,10 @@ from wtforms import SubmitField
 from wtforms.fields.html5 import EmailField
 from wtforms import validators
 from wtforms import TextField
+from wtforms import SelectField
+from dbhelper import DBHelper
+
+DB = DBHelper()
 
 
 class RegistrationForm(FlaskForm):
@@ -29,3 +33,22 @@ class CreateTableForm(FlaskForm):
 	validators = [validators.DataRequired()])
 	submit = SubmitField('createtablesubmit',
 	validators = [validators.DataRequired()])
+
+class CreateMenuCategorieForm(FlaskForm):
+	name = TextField('name',
+	validators = [validators.DataRequired()])
+	submit = SubmitField('createmenucategorie',
+	validators = [validators.DataRequired()])
+
+class AddMenuItemForm(FlaskForm):
+	name = TextField('name',
+	validators = [validators.DataRequired()])
+	item = SelectField('item', choices =[DB.get_menu()],
+	validators = [validators.DataRequired()])
+	description = TextField('description',
+	validators = [validators.DataRequired()])
+	price = TextField('price',
+	validators = [validators.DataRequired()])
+	submit = SubmitField('createmenucategorie',
+	validators = [validators.DataRequired()])
+

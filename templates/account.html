@@ -47,6 +47,23 @@
                        class="btn btn-primary")}}
                  </div>
                </form>
+               <h2>Modify menu</h2>
+               <form class="form-inline" action="/account/createtable" method="POST">
+                 <div class="form-group">
+                   {% if createmenucategorieform.name.errors %}
+                      <ul class="errors">
+                        {% for error in createmenucategorieform.name.errors %}
+                          <li>{{ errror }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                    {{ createmenucategorieform.csrf_token }}
+                    {{ createmenucategorieform.name(class="form-control",
+                       placeholder="Table number or name")}}
+                    {{ createmenucategorieform.submit(value="Create",
+                       class="btn btn-primary")}}
+                 </div>
+               </form>
            </div>
        </div>
    </div>
