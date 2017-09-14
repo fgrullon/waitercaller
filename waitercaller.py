@@ -95,7 +95,7 @@ def dashboard_resolve():
 def account():
 	tables = DB.get_tables(current_user.get_id())
 	return render_template("account.html", createtableform=CreateTableForm(),
-	tables=tables)
+	tables=tables, createmenucategorieform=CreateMenuCategorieForm())
 
 @app.route("/account/createtable", methods=["POST"])
 @login_required
@@ -129,7 +129,7 @@ def newrequest(tid):
 def order_mag():
 	return render_template("orders.html")
 
-@app.route("/orders/addcategorie")
+@app.route("/orders/addcategorie", methods=["POST"])
 @login_required
 def order_addcategorie():
 	form = AddCategorie(request.form)
@@ -137,7 +137,7 @@ def order_addcategorie():
 		name = form.name.data
 		DB.add_categories(name)
 		return redirect(url_for('account'))
-	return render_template("account.html", createmenucategorieform=CreateMenuCategorieForm())
+	return render_template("account.html")
 
 if __name__ == "__main__":
 	app.run(port=5000, debug=True)
