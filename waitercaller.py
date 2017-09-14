@@ -125,7 +125,7 @@ def newrequest(tid):
 	return "There is already a request pending for this table. Please be patient, a waiter will be there ASAP."
 
 @app.route("/orders")
-login_required
+@login_required
 def order_mag():
 	return render_template("orders.html")
 
