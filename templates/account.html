@@ -64,31 +64,7 @@
                        class="btn btn-primary")}}
                  </div>
                </form>
-                <h2>Add New Item</h2>
-               <form class="form-inline" action="/orders/addcategorie" method="POST">
-                 <div class="form-group">
-                   {% if addmenuitemform.name.errors %}
-                      <ul class="errors">
-                        {% for error in addmenuitemform.name.errors %}
-                          <li>{{ errror }}</li>
-                        {% endfor %}
-                      </ul>
-                    {% endif %}
-                    {{ addmenuitemform.csrf_token }}
-
-                    {{ addmenuitemform.item(class="form-control",
-                       placeholder="Item name")}}
-
-                    {{ addmenuitemform.description(class="form-control",
-                       placeholder="Description")}}
-
-                    {{ addmenuitemform.price(class="form-control",
-                       placeholder="Price")}}
-
-                    {{ addmenuitemform.submit(value="Create",
-                       class="btn btn-primary")}}
-                 </div>
-               </form>
+     
            </div>
        </div>
    </div>
