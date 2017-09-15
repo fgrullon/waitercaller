@@ -41,7 +41,9 @@ class CreateMenuCategorieForm(FlaskForm):
 	validators = [validators.DataRequired()])
 
 class AddMenuItemForm(FlaskForm):
-	item = TextField('item', 
+	name = TextField('name', 
+	validators = [validators.DataRequired()])
+	item = SelectField('item', choices=['Burguers', 'Salads'],
 	validators = [validators.DataRequired()])
 	description = TextField('description',
 	validators = [validators.DataRequired()])
