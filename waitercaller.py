@@ -94,8 +94,8 @@ def dashboard_resolve():
 @login_required
 def account():
 	tables = DB.get_tables(current_user.get_id())
-	return render_template("account.html", createtableform=CreateTableForm(),
-	tables=tables, createmenucategorieform=CreateMenuCategorieForm())
+	return render_template("account.html", createtableform=CreateTableForm(), 
+	tables=tables, createmenucategorieform=CreateMenuCategorieForm(), addmenuitemform=AddMenuItemForm())
 
 @app.route("/account/createtable", methods=["POST"])
 @login_required
@@ -137,6 +137,19 @@ def order_addcategorie():
 		name = form.categorie_name.data
 		print(name)
 		DB.add_categories(name)
+		return redirect(url_for('account'))
+	return render_template("account.html")
+
+@app.route("/orders/addmenuitem", methods=["POST"])
+@login_required
+def order_addmenuitem():
+	form = AddCategorie(request.form)
+	if form.validate():
+		name = form.item.name
+		item = form.item.data
+		description = form.item.description
+		price = form.item.price
+		DB.add_categories(name, item, description, price)
 		return redirect(url_for('account'))
 	return render_template("account.html")
 

@@ -47,6 +47,6 @@ class AddMenuItemForm(FlaskForm):
 	validators = [validators.DataRequired()])
 	price = TextField('price',
 	validators = [validators.DataRequired()])
-	submit = SubmitField('createmenucategorie',
+	submit = SubmitField('addmenuitem',
 	validators = [validators.DataRequired()])
 
