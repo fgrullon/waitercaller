@@ -135,10 +135,10 @@ def order_addcategorie():
 	form = CreateMenuCategorieForm(request.form)
 	if form.validate():
 		name = form.categorie_name.data
-		print(name)
 		DB.add_categories(name)
 		return redirect(url_for('account'))
-	return render_template("account.html")
+	return render_template("account.html", createmenucategorieform=form,
+		 addmenuitemform=AddMenuItemForm())
 
 @app.route("/orders/addmenuitem", methods=["POST"])
 @login_required
