@@ -132,7 +132,7 @@ def order_mag():
 @app.route("/orders/addcategorie", methods=["POST"])
 @login_required
 def order_addcategorie():
-	form = AddCategorie(request.form)
+	form = CreateMenuCategorieForm(request.form)
 	if form.validate():
 		name = form.categorie_name.data
 		print(name)
