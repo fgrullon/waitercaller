@@ -55,5 +55,5 @@ class DBHelper:
         self.db.menu.update({"name" : name}, {"$set" : {"item" : item, "description" : description, "price": price}})
 
     def get_menu(self):
-        menu = self.db.orders.find({}, {"_id" : 0, "name" : 1})
+        menu = self.db.menu.find({}, {"_id" : 0, "name" : 1})
         return menu
