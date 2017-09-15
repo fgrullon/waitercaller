@@ -75,12 +75,13 @@
                       </ul>
                     {% endif %}
                     {{ addmenuitemform.csrf_token }}
+                    {{ addmenuitemform.name((class='dropdown-content')}}
                     {{ addmenuitemform.item(class="form-control",
-                       placeholder="Categorie name")}}
+                       placeholder="Item name")}}
                     {{ addmenuitemform.description(class="form-control",
-                       placeholder="Categorie name")}}
+                       placeholder="Description")}}
                     {{ addmenuitemform.price(class="form-control",
-                       placeholder="Categorie name")}}
+                       placeholder="Price")}}
                     {{ addmenuitemform.submit(value="Add",
                        class="btn btn-primary")}}
                  </div>
