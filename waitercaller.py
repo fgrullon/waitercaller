@@ -143,13 +143,13 @@ def order_addcategorie():
 @app.route("/orders/addmenuitem", methods=["POST"])
 @login_required
 def order_addmenuitem():
-	form = AddCategorie(request.form)
+	form = AddMenuItemForm(request.form)
 	if form.validate():
 		name = form.item.name
 		item = form.item.data
 		description = form.item.description
 		price = form.item.price
-		DB.add_categories(name, item, description, price)
+		DB.add_menu_items(name, item, description, price)
 		return redirect(url_for('account'))
 	return render_template("account.html")
 
