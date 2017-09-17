@@ -145,10 +145,10 @@ def order_addcategorie():
 def order_addmenuitem():
 	form = AddMenuItemForm(request.form)
 	if form.validate():
-		name = form.item.name
+		name = form.name.data
 		item = form.item.data
-		description = form.item.description
-		price = form.item.price
+		description = form.description.data
+		price = form.price.data
 		DB.add_menu_items(name, item, description, price)
 		return redirect(url_for('account'))
 	return render_template("account.html")
