@@ -134,6 +134,10 @@ def order_mag():
 def order_addcategorie():
 	form = CreateMenuCategorieForm(request.form)
 	if form.validate():
+		if form.categorie_name.data in DB.get_categories_name():
+			form.categorie_name.errors.append("Category already registered")
+			return render_template("account.html", createmenucategorieform=form,
+		  addmenuitemform=AddMenuItemForm())
 		name = form.categorie_name.data
 		DB.add_categories(name)
 		return redirect(url_for('account'))
