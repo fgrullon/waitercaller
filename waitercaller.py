@@ -136,8 +136,7 @@ def order_addcategorie():
 	if form.validate():
 		name = form.categorie_name.data
 		DB.add_categories(name)
-		return render_template("account.html", createmenucategorieform=CreateMenuCategorieForm(),
-		  addmenuitemform=AddMenuItemForm())
+		return redirect(url_for('account'))
 	return render_template("account.html", createmenucategorieform=form,
 		  addmenuitemform=AddMenuItemForm())
 
