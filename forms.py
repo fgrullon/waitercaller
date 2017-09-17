@@ -42,7 +42,7 @@ class CreateMenuCategorieForm(FlaskForm):
 
 class AddMenuItemForm(FlaskForm):
 	cat = DB.get_categories_name()
-	name = SelectField('name', choices=[(c['name'], c['name']) for c in cat])
+	name = SelectField('name', choices=[(c['categorie_name'], c['categorie_name']) for c in cat])
 	item = TextField('item', 
 	validators = [validators.DataRequired()])
 	description = TextField('description',
