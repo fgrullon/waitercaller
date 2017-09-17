@@ -136,6 +136,7 @@ def order_addcategorie():
 	categories = [c['categorie_name'] for c in DB.get_categories_name()]
 	if form.validate():
 		if form.categorie_name.data in categories:
+			form.categorie_name.errors.append("Email addres already registered")
 			return redirect(url_for('account'))
 		name = form.categorie_name.data
 		DB.add_categories(name)
