@@ -137,7 +137,8 @@ def order_addcategorie():
 	if form.validate():
 		if form.categorie_name.data in categories:
 			form.categorie_name.errors.append("Email addres already registered")
-			return redirect(url_for('account'))
+			return render_template("account.html", createmenucategorieform=CreateMenuCategorieForm(),
+		  addmenuitemform=AddMenuItemForm())
 		name = form.categorie_name.data
 		DB.add_categories(name)
 		return redirect(url_for('account'))
