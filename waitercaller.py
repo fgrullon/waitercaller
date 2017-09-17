@@ -94,8 +94,9 @@ def dashboard_resolve():
 @login_required
 def account():
 	tables = DB.get_tables(current_user.get_id())
+	form = AddMenuItemForm()
 	return render_template("account.html", createtableform=CreateTableForm(), 
-	tables=tables, createmenucategorieform=CreateMenuCategorieForm(), addmenuitemform=AddMenuItemForm())
+	tables=tables, createmenucategorieform=CreateMenuCategorieForm(), addmenuitemform=form)
 
 @app.route("/account/createtable", methods=["POST"])
 @login_required
