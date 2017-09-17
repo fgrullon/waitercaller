@@ -49,11 +49,11 @@ class DBHelper:
         self.db.requests.remove({"_id": ObjectId(request_id)})
 
     def add_categories(self, name):
-        self.db.menu.insert({"name" : name})
+        self.db.categories.insert({"categorie_name" : name})
 
     def add_menu_items(self, name, item, description, price):
-        self.db.menu.update({"name" : name}, {"$set" : {"item" : item, "description" : description, "price": price}})
+        self.db.menu.update({"categorie_name" : name}, {"$set" : {"item_name" : item, "description" : description, "price": price}})
 
-    def get_menu(self):
-        menu = self.db.menu.find({}, {"_id" : 0, "name" : 1})
-        return menu
+    def get_categories_name(self):
+        categories = self.db.categories.find({}, {"_id" : 0, "categorie_name" : 1})
+        return categories
