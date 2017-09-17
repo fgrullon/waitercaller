@@ -52,7 +52,7 @@ class DBHelper:
         self.db.categories.insert({"categorie_name" : name})
 
     def add_menu_items(self, name, item, description, price):
-        self.db.menu.update({"categorie_name" : name}, {"$set" : {"item_name" : item, "description" : description, "price": price}})
+        self.db.menu.insert({"categorie_name" : name, "item_name" : item, "description" : description, "price": price})
 
     def get_categories_name(self):
         categories = self.db.categories.find({}, {"_id" : 0, "categorie_name" : 1})
