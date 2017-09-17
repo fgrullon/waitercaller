@@ -136,7 +136,6 @@ def order_addcategorie():
 	categories = [c['categorie_name'] for c in DB.get_categories_name()]
 	if form.validate():
 		if form.categorie_name.data in categories:
-			form.categorie_name.errors.append("Email addres already registered")
 			return render_template("account.html", createmenucategorieform=CreateMenuCategorieForm(),
 		  addmenuitemform=AddMenuItemForm())
 		name = form.categorie_name.data
