@@ -133,9 +133,10 @@ def order_mag():
 @login_required
 def order_addcategorie():
 	form = CreateMenuCategorieForm(request.form)
+	categories = 	name = SelectField('name', choices=[(c['categorie_name'], c['categorie_name']) for c in DB.get_categories_name()])
 	if form.validate():
 		print("name: ",form.categorie_name.data)
-		print("names: ",DB.get_categories_name())
+		print("names: ",categories)
 		name = form.categorie_name.data
 		DB.add_categories(name)
 		return redirect(url_for('account'))
