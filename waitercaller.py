@@ -136,12 +136,13 @@ def order_addcategorie():
 	if form.validate():
 		if form.categorie_name.data in categories:
 			form.categorie_name.errors.append("Category already registered")
-			return render_template("account.html")
+			return render_template("account.html", createtableform=CreateTableForm(), tables=DB.get_tables(current_user.get_id()), 
+		createmenucategorieform=form, addmenuitemform=AddMenuItemForm())
 		name = form.categorie_name.data
 		DB.add_categories(name)
 		return redirect(url_for('account'))
-	return render_template("account.html", createmenucategorieform=form,
-		  addmenuitemform=AddMenuItemForm())
+	return render_template("account.html", createtableform=CreateTableForm(), tables=DB.get_tables(current_user.get_id()), 
+		createmenucategorieform=form, addmenuitemform=AddMenuItemForm())
 
 @app.route("/orders/addmenuitem", methods=["POST"])
 @login_required
@@ -154,7 +155,8 @@ def order_addmenuitem():
 		price = form.price.data
 		DB.add_menu_items(name, item, description, price)
 		return redirect(url_for('account'))
-	return render_template("account.html")
+	return render_template("account.html", createtableform=CreateTableForm(), tables=DB.get_tables(current_user.get_id()), 
+		createmenucategorieform=CreateMenuCategorieForm(), addmenuitemform=form)
 
 
 
