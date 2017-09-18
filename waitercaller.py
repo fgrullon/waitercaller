@@ -136,8 +136,8 @@ def order_addcategorie():
 	categories = [c['categorie_name'] for c in DB.get_categories_name()]
 	if form.validate():
 		if form.categorie_name.data in categories:
-			form.categorie_name.errors.append("Email addres already registered")
-			return redirect(url_for('account'))
+			form.categorie_name.errors.append("Category already registered")
+			return render_template("account.html", createmenucategorieform=form, addmenuitemform=AddMenuItemForm())
 		name = form.categorie_name.data
 		DB.add_categories(name)
 		return redirect(url_for('account'))
@@ -156,6 +156,8 @@ def order_addmenuitem():
 		DB.add_menu_items(name, item, description, price)
 		return redirect(url_for('account'))
 	return render_template("account.html")
+
+
 
 if __name__ == "__main__":
 	app.run(port=5000, debug=True)
