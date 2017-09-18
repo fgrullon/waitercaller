@@ -130,9 +130,8 @@ def order_mag():
 	category = "Burguers"
 	menu = DB.get_menu(category)
 	categorty_list = [c['categorie_name'] for c in categories]
-	menu_list = [i for i in menu_list]
-	print(menu_list)
-	return render_template("orders.html", categories=categorty_list)
+	menu_list = [i for i in menu]
+	return render_template("orders.html", categories=categorty_list, menu=menu_list)
 
 @app.route("/orders/addcategorie", methods=["POST"])
 @login_required
