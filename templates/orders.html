@@ -20,6 +20,14 @@
             <li><a href="">Ensaladas</a></li>
           </ul>
         </div>
+         <h2>Categories</h2>
+            <ul>
+                {% for category in categories %}
+                    <li>
+                      {{ category }}
+                    </li>
+                {% endfor %}
+            </ul>
         <div class="col-md-4">
           <h2>Burguers</h2>
           <ul>

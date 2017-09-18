@@ -126,7 +126,8 @@ def newrequest(tid):
 @app.route("/orders")
 @login_required
 def order_mag():
-	return render_template("orders.html")
+	categories = DB.get_categories_name()
+	return render_template("orders.html", categories=categories)
 
 @app.route("/orders/addcategorie", methods=["POST"])
 @login_required
@@ -148,8 +149,11 @@ def order_addcategorie():
 @login_required
 def order_addmenuitem():
 	form = AddMenuItemForm(request.form)
-	print("{}".format(get_menu_item_by_name("Cheese Burguer")))
 	if form.validate():
+		if DB.get_menu_item_by_name(form.item.data):
+			form.item.errors.append("Item already registerd")
+			return render_template("account.html", createtableform=CreateTableForm(), tables=DB.get_tables(current_user.get_id()), 
+		createmenucategorieform=CreateMenuCategorieForm(), addmenuitemform=form)
 		name = form.name.data
 		item = form.item.data
 		description = form.description.data
