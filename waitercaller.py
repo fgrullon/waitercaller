@@ -104,12 +104,11 @@ def account_createtable():
 	if form.validate():
 		tableid = DB.add_table(form.tablenumber.data,
 		current_user.get_id())
-		new_url = BH.shorten_url(config.base_url + "/newrequest/" +
-		str(tableid))
+		new_url = BH.shorten_url(config.base_url+"/newrequest/"+str(tableid))
 		DB.update_table(tableid, new_url)
-		return redirect(url_for('account'))
-	return render_template("account.html", createtableform=form,
-	tables=DB.get_tables(current_user.get_id()))
+		return render_template("account.html", createtableform=CreateTableForm(), 
+	tables=tables, createmenucategorieform=CreateMenuCategorieForm(), addmenuitemform=AddMenuItemForm())
+	return render_template("account.html", createtableform=form, tables=DB.get_tables(current_user.get_id()))
 
 @app.route("/account/deletetable", methods=["POST"])
 @login_required
