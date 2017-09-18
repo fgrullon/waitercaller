@@ -127,7 +127,8 @@ def newrequest(tid):
 @login_required
 def order_mag():
 	categories = DB.get_categories_name()
-	return render_template("orders.html", categories=categories)
+	categorty_list = [c['categorie_name'] for c in categories]
+	return render_template("orders.html", categories=categorty_list)
 
 @app.route("/orders/addcategorie", methods=["POST"])
 @login_required
