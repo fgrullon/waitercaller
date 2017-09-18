@@ -148,7 +148,7 @@ def order_addcategorie():
 @login_required
 def order_addmenuitem():
 	form = AddMenuItemForm(request.form)
-	print("{}".format(get_menu_item_by_name(form.item.data)))
+	print("{}".format(get_menu_item_by_name("Cheese Burguer")))
 	if form.validate():
 		name = form.name.data
 		item = form.item.data
