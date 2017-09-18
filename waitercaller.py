@@ -148,10 +148,8 @@ def order_addcategorie():
 @login_required
 def order_addmenuitem():
 	form = AddMenuItemForm(request.form)
-	item = [c['categorie_name'] for c in DB.get_categories_name()]
+	print("{}".format(get_menu_item_by_name(form.item.data)))
 	if form.validate():
-		if get_menu_item_by_name(form.item.data):
-			print("Item finded")
 		name = form.name.data
 		item = form.item.data
 		description = form.description.data
