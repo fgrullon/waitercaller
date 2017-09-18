@@ -36,7 +36,7 @@
                    {% if createtableform.tablenumber.errors %}
                       <ul class="errors">
                         {% for error in createtableform.tablenumber.errors %}
-                          <li>{{ errror }}</li>
+                          <li>{{ error }}</li>
                         {% endfor %}
                       </ul>
                     {% endif %}
@@ -53,7 +53,7 @@
                    {% if createmenucategorieform.categorie_name.errors %}
                       <ul class="errors">
                         {% for error in createmenucategorieform.categorie_name.errors %}
-                          <li>{{ errror }}</li>
+                          <li>{{ error }}</li>
                         {% endfor %}
                       </ul>
                     {% endif %}
@@ -70,7 +70,7 @@
                    {% if addmenuitemform.item.errors %}
                       <ul class="errors">
                         {% for error in addmenuitemform.item.errors %}
-                          <li>{{ errror }}</li>
+                          <li>{{ error }}</li>
                         {% endfor %}
                       </ul>
                     {% endif %}

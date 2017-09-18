@@ -148,9 +148,14 @@ def order_addcategorie():
 @login_required
 def order_addmenuitem():
 	form = AddMenuItemForm(request.form)
+	item = [c['categorie_name'] for c in DB.get_categories_name()]
 	if form.validate():
 		name = form.name.data
 		item = form.item.data
+		if get_menu_item_by_name(item):
+			form.item.errors.append("Item already registerd")
+			return render_template("account.html", createtableform=CreateTableForm(), tables=DB.get_tables(current_user.get_id()), 
+		createmenucategorieform=CreateMenuCategorieForm(), addmenuitemform=form)
 		description = form.description.data
 		price = form.price.data
 		DB.add_menu_items(name, item, description, price)
