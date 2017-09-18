@@ -26,7 +26,11 @@
           <h2>Burguers</h2>
           <ul>
             {% for item in menu %}
-            
+            <li>
+              <p><strong>{{ item["item_name"] }}</strong></p>
+              <p>{{ item["description"] }}</p>
+              <p>{{ item["price"] }}</p>
+            </li>
             <hr>
             {% endfor %}
           </ul>
