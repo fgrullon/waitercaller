@@ -16,7 +16,7 @@
             <ul>
                 {% for category in categories %}
                     <li>
-                      {{ category }}
+                      <a href="{{ category }}">{{ category }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -25,29 +25,14 @@
         <div class="col-md-4">
           <h2>Burguers</h2>
           <ul>
+            {% for item in menu %}
             <li>
-              <p><strong>Bacon Cheese Burguer</strong></p>
-              <p>Hamburguesa cubierta de queso, tocino, lechuga, tomate, cebolla y pepinillo</p>
-              <p>$355.00</p>
+              <p><strong>{{ item["item_name"] }}</strong></p>
+              <p>{{ item["description"] }}</p>
+              <p>{{ item["price"] }}</p>
             </li>
             <hr>
-            <li>
-              <p><strong>Bacon Cheese Burguer</strong></p>
-              <p>Hamburguesa cubierta de queso, tocino, lechuga, tomate, cebolla y pepinillo</p>
-              <p>$355.00</p>
-            </li>
-            <hr>
-            <li>
-              <p><strong>Bacon Cheese Burguer</strong></p>
-              <p>Hamburguesa cubierta de queso, tocino, lechuga, tomate, cebolla y pepinillo</p>
-              <p>$355.00</p>
-            </li>
-            <hr>
-            <li>
-              <p><strong>Bacon Cheese Burguer</strong></p>
-              <p>Hamburguesa cubierta de queso, tocino, lechuga, tomate, cebolla y pepinillo</p>
-              <p>$355.00</p>
-            </li>
+            {% endfor %}
           </ul>
        </div>
   
