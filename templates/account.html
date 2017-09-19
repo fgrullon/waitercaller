@@ -11,7 +11,7 @@
    <div class="container">
        <div class="row">
            <div class="col-md-12">
-               <h2>Tables</h2>
+               <h2>URL</h2>
                <table class="table table-striped">
                  <tr>
                    <th>No.</th>
@@ -21,7 +21,6 @@
                  {% for table in tables %}
                   <form class="form-inline" action="/account/deletetable" method="POST">
                     <tr>
-                      <td>{{ table.number }}</td>
                       <td>{{ table.url }}</td>
 
                       <input type="text" name="tableid" value="{{ table._id }}" hidden>
@@ -30,7 +29,7 @@
                   </form>
                   {% endfor %}
                </table>
-               <h2>Add new table</h2>
+               <h2>Create URL for orders</h2>
                <form class="form-inline" action="/account/createtable" method="POST">
                  <div class="form-group">
                    {% if createtableform.tablenumber.errors %}

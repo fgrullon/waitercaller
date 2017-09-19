@@ -13,15 +13,14 @@
       <div class="row">
         <div class="col-md-4">
           <h2>Categories</h2>
-            <ul class="categories">
-                {% for category in categories %}
-                    <li>
-                      <a href="{{ category }}">{{ category }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
+            <div class="list-group">
+              {% for category in categories%}
+              <a href="{{ category }}" class="list-group-item">{{category}}</a>
+              {% endfor %}
+            </div>
         </div>
-         
+      
+                 
         <div class="col-md-4">
           <h2>Burguers</h2>
           <ul class="menu_item">
