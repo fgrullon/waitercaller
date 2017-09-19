@@ -13,8 +13,8 @@
       <div class="row">
         
 
-        
-       <div id="list-example" class="list-group">
+
+      <div id="list-example" class="list-group">
         <h2>Categories</h2>
         {% for category in categories %}
         <a class="list-group-item list-group-item-action" href="{{ category }}">{{ category }}</a>
@@ -24,9 +24,10 @@
         {% for item in menu%}
         <h4 id="{{ item['category_name'] }}"> {{ item["item_name"] }} </h4>
         <p>{{ item["description"] }}</p>
-        <small>{{ item["item["price"] }}</small>
+        <small>{{ item["price"] }}</small>
         {% endfor %}
       </div>
+  
   
 
        <div class="col-md-4">
