@@ -21,18 +21,20 @@
         </div>
       
                  
+
         <div class="col-md-4">
-          <h2>Burguers</h2>
-          <ul class="menu_item">
+          <h2>Menu</h2>
+          <div class="list-group">
             {% for item in menu %}
-            <li>
-              <p><strong>{{ item["item_name"] }}</strong></p>
-              <p>{{ item["description"] }}</p>
-              <p>{{ item["price"] }}</p>
-            </li>
-            <hr>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ item["item_name"] }}</h5>
+                <small>DOP${{ item["price"] }}</small>
+              </div>
+              <p class="mb-1">{{ item["description"] }}</p>
+            </a>
             {% endfor %}
-          </ul>
+          </div>
        </div>
   
 
