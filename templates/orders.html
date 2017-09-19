@@ -9,23 +9,21 @@
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Categories</h2>
-            <div class="list-group">
-              {% for category in categories%}
-              <a href="{{ category }}" class="list-group-item">{{category}}</a>
-              {% endfor %}
-            </div>
-        </div>
-      
-                 
-
-        <div class="col-md-4">
-          <h2>Menu</h2>
-          <div class="list-group">
-            {% for item in menu %}
+        <!-- Example row of columns -->
+       <div class="container">
+          <h1>Menu</h1>
+          <p class="lead"><i>Search by category the items you want and click to add to the cart.</i></p>
+          <div class="row">
+              <div class="col-sm-3" id="myScrollspy">
+                  <ul class="nav nav-tabs nav-stacked" data-offset-top="120" data-spy="affix">
+                    {% for category in categories %}
+                      <li><a href="#{{ category }}">{{ category }}</a></li>
+                    {% endfor %}
+                  </ul>
+              </div>
+              <div class="col-sm-9">
+            <div id="section1">
+              {% for item in menu %}
             <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{ item["item_name"] }}</h5>
@@ -34,9 +32,11 @@
               <p class="mb-1">{{ item["description"] }}</p>
             </a>
             {% endfor %}
+            </div>
+            <hr>
           </div>
-       </div>
-  
+          </div>
+      </div>
 
        <div class="col-md-4">
             <table id="cart" class="table table-hover table-condensed">
