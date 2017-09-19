@@ -11,31 +11,22 @@
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-md-4">
-          <h2>Categories</h2>
-            <div class="list-group">
-              {% for category in categories%}
-              <a href="{{ category }}" class="list-group-item">{{category}}</a>
-              {% endfor %}
-            </div>
-        </div>
-      
-                 
+        
 
-        <div class="col-md-4">
-          <h2>Menu</h2>
-          <div class="list-group">
-            {% for item in menu %}
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{ item["item_name"] }}</h5>
-                <small>DOP${{ item["price"] }}</small>
-              </div>
-              <p class="mb-1">{{ item["description"] }}</p>
-            </a>
-            {% endfor %}
-          </div>
-       </div>
+        
+       <div id="list-example" class="list-group">
+        <h2>Categories</h2>
+        {% for category in categories %}
+        <a class="list-group-item list-group-item-action" href="{{ category }}">{{ category }}</a>
+        {% endfor %}
+      </div>
+      <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+        {% for item in menu%}
+        <h4 id="{{ item['category_name'] }}"> {{ item["item_name"] }} </h4>
+        <p>{{ item["description"] }}</p>
+        <small>{{ item["item["price"] }}</small>
+        {% endfor %}
+      </div>
   
 
        <div class="col-md-4">
