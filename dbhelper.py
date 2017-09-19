@@ -61,6 +61,6 @@ class DBHelper:
     def get_menu_item_by_name(self, item):
         return self.db.menu.find_one({"item_name" : item})
 
-    def get_menu(self):
-        menu_all = self.db.menu.find({}, {"_id" : 0, "categorie_name" : 1, "item_name" : 1, "description" : 1, "price" : 1})
+    def get_menu(self, categorie_name):
+        menu_all = self.db.menu.find({"categorie_name" : categorie_name}, {"_id" : 0, "categorie_name" : 1, "item_name" : 1, "description" : 1, "price" : 1})
         return menu_all
