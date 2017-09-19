@@ -19,11 +19,10 @@
 
     <div class="container">
         <!-- Example row of columns -->
-       <div class="container">
           <h1>Menu</h1>
           <p class="lead"><i>Search by category the items you want and click to add to the cart.</i></p>
           <div class="row">
-              <div class="col-sm-3" id="menu-list">
+              <div class="col-md-4" id="menu-list">
                   <ul class="nav nav-tabs nav-stacked" data-offset-top="120" data-spy="affix">
                     {% for category in categories %}
                       <li><a href="#{{ category }}">{{ category }}</a></li>
@@ -44,8 +43,8 @@
              {% endfor %}
             <hr>
           </div>
-          </div>
-      </div>
+
+
 
        <div class="col-md-4">
             <table id="cart" class="table table-hover table-condensed">
@@ -87,7 +86,7 @@
           </tfoot>
         </table>
         </div>
-
+       </div>
 
       <footer>
         <p>&copy; 2016 Company, Inc.</p>
