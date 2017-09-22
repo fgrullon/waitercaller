@@ -29,62 +29,91 @@
                   </form>
                   {% endfor %}
                </table>
-               <h2>Create URL for orders</h2>
-               <form class="form-inline" action="/account/createtable" method="POST">
-                 <div class="form-group">
-                   {% if createtableform.tablenumber.errors %}
-                      <ul class="errors">
-                        {% for error in createtableform.tablenumber.errors %}
-                          <li>{{ error }}</li>
-                        {% endfor %}
-                      </ul>
-                    {% endif %}
-                    {{ createtableform.csrf_token }}
-                    {{ createtableform.tablenumber(class="form-control",
-                       placeholder="Table number or name")}}
-                    {{ createtableform.submit(value="Create",
-                       class="btn btn-primary")}}
-                 </div>
-               </form>
-               <h2>Add New Categorie</h2>
-               <form class="form-inline" action="/orders/addcategorie" method="POST">
-                 <div class="form-group">
-                   {% if createmenucategorieform.categorie_name.errors %}
-                      <ul class="errors">
-                        {% for error in createmenucategorieform.categorie_name.errors %}
-                          <li>{{ error }}</li>
-                        {% endfor %}
-                      </ul>
-                    {% endif %}
-                    {{ createmenucategorieform.csrf_token }}
-                    {{ createmenucategorieform.categorie_name(class="form-control",
-                       placeholder="Categorie name")}}
-                    {{ createmenucategorieform.submit(value="Create",
-                       class="btn btn-primary")}}
-                 </div>
-               </form>
-               <h2>Add Menu Item</h2>
-               <form class="form-inline" action="/orders/addmenuitem" method="POST">
-                 <div class="form-group">
-                   {% if addmenuitemform.item.errors %}
-                      <ul class="errors">
-                        {% for error in addmenuitemform.item.errors %}
-                          <li>{{ error }}</li>
-                        {% endfor %}
-                      </ul>
-                    {% endif %}
-                    {{ addmenuitemform.csrf_token }}
-                    {{ addmenuitemform.name(class='dropdown-content')}}
-                    {{ addmenuitemform.item(class="form-control",
-                       placeholder="Item name")}}
-                    {{ addmenuitemform.description(class="form-control",
-                       placeholder="Description")}}
-                    {{ addmenuitemform.price(class="form-control",
-                       placeholder="Price")}}
-                    {{ addmenuitemform.submit(value="Add",
-                       class="btn btn-primary")}}
-                 </div>
-               </form>
+              <div class = "panel panel-default">
+   <div class = "panel-heading">
+      <h3 class = "panel-title">
+         Create URL for orders
+      </h3>
+   </div>
+   
+   <div class = "panel-body">
+       <form class="form-inline" action="/account/createtable" method="POST">
+        <div class="form-group">
+           {% if createtableform.tablenumber.errors %}
+              <ul class="errors">
+                 {% for error in createtableform.tablenumber.errors %}
+                   <li>{{ error }}</li>
+                 {% endfor %}
+              </ul>
+           {% endif %}
+              {{ createtableform.csrf_token }}
+              {{ createtableform.tablenumber(class="form-control",
+                placeholder="Table number or name")}}
+              {{ createtableform.submit(value="Create",
+                class="btn btn-primary")}}
+        </div>
+       </form>
+   </div>
+</div>
+
+<div class = "panel panel-default">
+   <div class = "panel-heading">
+      <h3 class = "panel-title">
+         Add New Categorie
+      </h3>
+   </div>
+   
+   <div class = "panel-body">
+      <form class="form-inline" action="/orders/addcategorie" method="POST">
+         <div class="form-group">
+           {% if createmenucategorieform.categorie_name.errors %}
+             <ul class="errors">
+                {% for error in createmenucategorieform.categorie_name.errors %}
+                   <li>{{ error }}</li>
+                {% endfor %}
+             </ul>
+             {% endif %}
+             {{ createmenucategorieform.csrf_token }}
+             {{ createmenucategorieform.categorie_name(class="form-control",
+                placeholder="Categorie name")}}
+             {{ createmenucategorieform.submit(value="Create",
+                class="btn btn-primary")}}
+         </div>
+     </form>
+   </div>
+</div>
+        
+<div class = "panel panel-default">
+   <div class = "panel-heading">
+      <h3 class = "panel-title">
+         Add Menu Item
+      </h3>
+   </div>
+   
+   <div class = "panel-body">
+      <form class="form-inline" action="/orders/addmenuitem" method="POST">
+        <div class="form-group">
+          {% if addmenuitemform.item.errors %}
+            <ul class="errors">
+              {% for error in addmenuitemform.item.errors %}
+                 <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {{ addmenuitemform.csrf_token }}
+          {{ addmenuitemform.name(class='dropdown-content')}}
+          {{ addmenuitemform.item(class="form-control",
+             placeholder="Item name")}}
+          {{ addmenuitemform.description(class="form-control",
+             placeholder="Description")}}
+          {{ addmenuitemform.price(class="form-control",
+             placeholder="Price")}}
+          {{ addmenuitemform.submit(value="Add",
+             class="btn btn-primary")}}
+        </div>
+     </form>
+  </div>
+</div>
      
            </div>
        </div>

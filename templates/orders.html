@@ -31,7 +31,7 @@
               <div class="col-md-4">
             {% for item in menu %}
               <div id="{{item['categorie_name']}}">
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" onclick="alert({{item['categorie_name']}})">
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">{{ item["item_name"] }}</h5>
                   <small class="small-price"><strong>DOP${{ item["price"] }}</strong></small>
