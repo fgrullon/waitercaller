@@ -145,7 +145,8 @@ def order_addcategorie():
 		createmenucategorieform=form, addmenuitemform=AddMenuItemForm())
 		name = form.categorie_name.data
 		DB.add_categories(name)
-		return redirect(url_for('account'))
+		return render_template("account.html", createtableform=CreateTableForm(), tables=DB.get_tables(current_user.get_id()), 
+		createmenucategorieform=CreateMenuCategorieForm(), addmenuitemform=AddMenuItemForm())
 	return render_template("account.html", createtableform=CreateTableForm(), tables=DB.get_tables(current_user.get_id()), 
 		createmenucategorieform=form, addmenuitemform=AddMenuItemForm())
 
