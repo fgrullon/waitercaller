@@ -118,10 +118,13 @@ def account_deletetable():
 	return redirect(url_for('account'))
 
 @app.route("/newrequest/<tid>")
-def newrequest(tid):
-	if DB.add_request(tid, datetime.datetime.now()):
-		return "Your request has been logged and a waiter will be with you shortly."
-	return "There is already a request pending for this table. Please be patient, a waiter will be there ASAP."
+def orders():
+	categories = DB.get_categories_name()
+	category = "Burguers"
+	menu = DB.get_menu(category)
+	categorty_list = [c['categorie_name'] for c in categories]
+	menu_list = [i for i in menu]
+	return render_template("orders.html", categories=categorty_list, menu=menu_list)
 
 @app.route("/orders")
 @login_required
