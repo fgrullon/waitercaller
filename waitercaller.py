@@ -118,13 +118,14 @@ def account_deletetable():
 	return redirect(url_for('account'))
 
 @app.route("/newrequest/<tid>")
-def orders():
+def order_mag():
 	categories = DB.get_categories_name()
 	category = "Burguers"
 	menu = DB.get_menu(category)
 	categorty_list = [c['categorie_name'] for c in categories]
 	menu_list = [i for i in menu]
-	return render_template("orders.html", categories=categorty_list, menu=menu_list)
+	return "Crazy as fuck"
+	# return render_template("orders.html", categories=categorty_list, menu=menu_list)
 
 # @app.route("/orders")
 # @login_required
