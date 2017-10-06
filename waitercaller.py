@@ -81,8 +81,7 @@ def dashboard():
 	for req in requests:
 		deltaseconds = (now - req['time']).seconds
 		m, s = divmod(deltaseconds, 60)
-		h, m = divmod(m, 60)
-		req['wait_minutes'] = "{} :{} : {}".format(h, m, s)
+		req['wait_minutes'] = "{} : {} : {}".format(m, s)
 	return render_template("dashboard.html", requests=requests)
 
 @app.route("/dashboard/resolve")
