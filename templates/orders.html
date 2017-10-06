@@ -107,11 +107,7 @@
         var clockElement = document.getElementById('clock');
 
         function updateClock(clock){
-          var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-
-          hour = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12:true});
-          date = new Date().toLocaleTimeString(options);
-          clock.innerHTML = date+" || "+hour;
+          clock.innerHTML = new Date().toLocaleTimeString([], { weekday: 'long', day: 'numeric', month: 'long', hour12:true});
         }
 
         setInterval(function(){
