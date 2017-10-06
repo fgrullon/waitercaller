@@ -5,6 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport">
 <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}">
+<script src="../static/js/moment.min.js"></script>
+
 {% block metarefresh %} {% endblock %}
 
   <title>Waiter Caller</title>
@@ -105,15 +107,17 @@
       
         var clockElement = document.getElementById('clock');
 
-        function updateClock(clock){
-          hour = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12:true});
-          date = new Date(month, day)
-          clock.innerHTML = date+" || "+hour;
-        }
+        clockElement.val(moment().format(MMM, D, hh, a))
 
-        setInterval(function(){
-          updateClock(clockElement);
-        }, 1000);
+        // function updateClock(clock){
+        //   hour = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12:true});
+        //   date = new Date(month, day);
+        //   clock.innerHTML = date+" || "+hour;
+        // }
+
+        // setInterval(function(){
+        //   updateClock(clockElement);
+        // }, 1000);
       }());
     </script>
 </body>
