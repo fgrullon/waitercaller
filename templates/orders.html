@@ -4,6 +4,20 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport">
+<script type="text/javascript">
+  (function(){
+  
+    var clockElement = document.getElementById('clock');
+    alert(clockElement);
+    function updateClock(clock){
+      clock.innerHTML = new Date().toLocaleTimeString();
+    }
+
+    setInterval(function(){
+      updateClock(clockElement);
+    }, 1000);
+  }());
+</script>
 <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}">
 {% block metarefresh %} {% endblock %}
 
