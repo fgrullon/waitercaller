@@ -24,6 +24,17 @@ if (typeof jQuery === 'undefined') {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
+(function(){
+  var clockElement = document.getElementById('clock');
+
+  function updateClock(clock){
+    clock.innerHTML = new Date().toLocaleTimeString();
+  }
+
+  setInterval(function(){
+    updateClock(clockElement);
+  }, 1000);
+}());
 
 +function ($) {
   'use strict';
