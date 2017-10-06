@@ -119,7 +119,12 @@ def account_deletetable():
 
 @app.route("/newrequest/<tid>")
 def newrequest(tid):
-	return render_template("orders.html")
+	categories = DB.get_categories_name()
+	category = "Burguers"
+	menu = DB.get_menu(category)
+	categorty_list = [c['categorie_name'] for c in categories]
+	menu_list = [i for i in menu]
+	return render_template("orders.html", categories=categorty_list, menu=menu_list)
 
 @app.route("/orders")
 @login_required
