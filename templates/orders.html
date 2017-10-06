@@ -107,7 +107,7 @@
       
         var clockElement = document.getElementById('clock');
 
-        clockElement.val(moment().format(MMM, D, hh, a))
+        clockElement.innerHTML = moment().format(MMM, D, hh, a);
 
         // function updateClock(clock){
         //   hour = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12:true});
