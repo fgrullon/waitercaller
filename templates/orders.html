@@ -17,7 +17,7 @@
 <body data-spy="scroll" data-target="#menu-list" >
 
     <div class="container">
-      <span id="clock">This a clock</span>
+      <span id="clock"></span>
         <!-- Example row of columns -->
           <h1>Menu</h1>
           <p class="lead"><i>Search by category the items you want and click to add to the cart.</i></p>
@@ -106,7 +106,7 @@
         var clockElement = document.getElementById('clock');
 
         function updateClock(clock){
-          clock.innerHTML = new Date().toLocaleTimeString();
+          clock.innerHTML = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         }
 
         setInterval(function(){
