@@ -119,7 +119,7 @@ def account_deletetable():
 
 @app.route("/newrequest/<tid>")
 def newrequest(tid):
-	return redirect(url_for('orders'))
+	return render_template("orders.html")
 
 @app.route("/orders")
 @login_required
